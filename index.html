@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mang Aryel Sari Sari Store</title>
+	<link rel="stylesheet" href="VSC2.css">
+	<link rel="icon" type="image/png" href="IMAGES/logo.png">
+    <style>
+
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <div class="navbar-logos">
+			<a href="https://www.umak.edu.ph/about/"><img src="IMAGES/UMak Logo - Black R.png" alt="UMAK" class="logo-icon"></a>
+				<a href="https://www.umak.edu.ph/academics/college/cite/"><img src="IMAGES/CITE.png" alt="CITE" class="logo-icon"></a>
+					<a href="https://www.umak.edu.ph/academics/college/cite/hsu/"><img src="IMAGES/HSU.png" alt="HSU" class="logo-icon"></a>
+            </div>
+            <div class="navbar-separator"></div>
+            <div class="navbar-title"><button class="audio-button" onclick="toggleAudio()">🔊</button></div>
+        <audio id="musicPlayer" preload="auto"></audio>
+		</div>
+
+        <div class="navbar-center">
+            <ul class="navbar-links">
+                <li><a href="hhhh.html"> Prelude of CSS</a></li>
+
+            </ul>
+        </div>
+
+        <div class="navbar-right">
+            <div class="audio-status" id="audioStatus">Shuffle off</div>
+            <div class="navbar-auth">
+            </div>
+        </div>
+    </nav>
+
+    
+
+    <!-- ENTRANCE VIEW -->
+    <div class="entrance" id="entranceView">
+        <div class="store-front">
+            <div class="play-buttons-container">
+                <button class="play-button" style="background-image: url('IMAGES/PLAY12.png');" onclick="enterStore(1)"></button>
+                <button class="play-button" style="background-image: url('IMAGES/GUIDE.png');" onclick="window.location.href='guide.html'"></button>               
+            </div>
+        </div>
+    </div>
+
+    <!-- STORE INTERIOR VIEW -->
+    <div class="store-interior" id="storeInterior">
+        <button class="back-button" onclick="goBack()">← Back</button>
+
+        <div class="products-container" id="productsContainer">
+            <!-- Products will be dynamically generated -->
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <!-- Game Selection Modal -->
+    <div class="game-modal" id="gameModal">
+        <div class="game-modal-content">
+            <div class="game-modal-header">
+                <h2>Choose your game</h2>
+                <button class="close-modal" onclick="closeGameSelection()">&times;</button>
+            </div>
+            <div class="game-modal-body">
+                <div class="game-grid">
+                    <div class="game-card" onclick="selectGame('memory')">
+                        <div class="game-icon">🧠</div>
+                        <h3>Memory Matching Game</h3>
+                        <p> Match a pair of cards</p>
+                    </div>
+                    <div class="game-card" onclick="selectGame('arnis')">
+                        <div class="game-icon">🥋</div>
+                        <h3>Arnis Duel</h3>
+                        <p> Test your reaction time</p>
+                    </div>
+                    <div class="game-card" onclick="selectGame('space')">
+                        <div class="game-icon">🚀</div>
+                        <h3>Space Quiz Mission</h3>
+                        <p> Answer space related question</p>
+                    </div>
+                    <div class="game-card" onclick="selectGame('slot')">
+                        <div class="game-icon">🎰</div>
+                        <h3>Slot Machine</h3>
+                        <P> Calculate the probability of getting a jackpot</P>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+// Store products
+const products = [
+    { name: 'Stick-o', imageUrl: 'IMAGES/StickO.png'},
+    { name: 'Cheezy', imageUrl: 'IMAGES/Cheezy.png'},
+    { name: 'Vcut', imageUrl: 'IMAGES/Vcut.png'},
+	{ name: 'Clover Chip', imageUrl: 'IMAGES/Clover.png'},
+	{ name: 'Mr. Chips', imageUrl: 'IMAGES/Mr. Chips.png'},
+	{ name: 'Tomi', imageUrl: 'IMAGES/Tomi.png'},
+	{ name: 'Fudgee Bar Flavor Combo', imageUrl: 'IMAGES/Fudgee Bar.png'},
+	{ name: 'Bear Brand (33g)', imageUrl: 'IMAGES/Bear Brand.png'},
+	{ name: 'Milo', imageUrl: 'IMAGES/Milo.png'},
+	{ name: 'De Lata', imageUrl: 'IMAGES/De lata.png'},
+	{ name: 'Tide Bar Soap (150g)', imageUrl: 'IMAGES/Tide Bar Soap.png'},
+	{ name: 'Ariel Twin Jumbo Pack', imageUrl: 'IMAGES/Ariel.png'},
+	{ name: 'Palmolive Triple Sachet', imageUrl: 'IMAGES/Palmolive.png'},
+	{ name: 'Lucky Me Assorted', imageUrl: 'IMAGES/Lucky.png'},
+	{ name: 'Datu Puti Toyo at Suka', imageUrl: 'IMAGES/Toyo.png'}
+];
+
+function getNextGame() {
+    const games = ['memory', 'arnis', 'space', 'slot'];
+    const currentGame = sessionStorage.getItem('nextGame') || 'memory';
+    const currentIndex = games.indexOf(currentGame);
+    const nextIndex = (currentIndex + 1) % games.length;
+    return games[nextIndex];
+}
+
+function advanceGameState() {
+    const nextGame = getNextGame();
+    sessionStorage.setItem('nextGame', nextGame);
+    return nextGame;
+}
+
+function goToGame() {
+    showGameSelection();
+}
+
+// Function to enter the store
+function enterStore(storeNumber) {
+    const entranceView = document.getElementById('entranceView');
+    const storeInterior = document.getElementById('storeInterior');
+    const storeMessage = document.getElementById('storeMessage');
+    
+    entranceView.style.display = 'none';
+    storeInterior.classList.add('active');
+    
+    // Generate products
+    generateProducts();
+    
+    // Add animation
+    storeInterior.style.animation = 'fadeIn 0.5s ease-in';
+}
+
+// Function to generate products
+function generateProducts() {
+    const productsContainer = document.getElementById('productsContainer');
+    productsContainer.innerHTML = '';
+    
+    products.forEach((product, index) => {
+        const productDiv = document.createElement('div');
+        productDiv.className = 'product';
+        
+        // Dito natin ilalagay ang image imbes na icon lang
+        productDiv.innerHTML = `
+            <div class="product-image-container">
+                <img src="${product.imageUrl}" alt="${product.name}" class="product-img">
+            </div>
+            <div class="product-name">${product.name}</div>
+            <button class="buy-button" onclick="goToGame()">Get</button>
+        `;
+
+        productsContainer.appendChild(productDiv);
+    });
+}
+
+
+// Function to go back to entrance
+function goBack() {
+    const entranceView = document.getElementById('entranceView');
+    const storeInterior = document.getElementById('storeInterior');
+    
+    storeInterior.classList.remove('active');
+    entranceView.style.display = 'flex';
+    entranceView.style.opacity = '0';
+    
+    // Fade in entrance
+    setTimeout(() => {
+        entranceView.style.opacity = '1';
+    }, 50);
+}
+
+// Function to buy product
+function buyProduct(productName, index) {
+    
+    // Add a small animation
+    const products = document.querySelectorAll('.product');
+    products[index].style.animation = 'pulse 0.5s ease';
+}
+
+
+// Add CSS animations
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+    }
+`;
+document.head.appendChild(style);
+
+const playlist = [
+    { title: 'Sino Nga Ba Siya', src: 'AUDIOS/Sino Nga Ba Siya.mp3' },
+	{ title: 'Not Cute Anymore', src: 'AUDIOS/Not Cute Anymore.mp3' },
+    { title: 'Cosmic', src: 'AUDIOS/Cosmic.mp3' },
+    { title: 'Reckless', src: 'AUDIOS/Reckless.mp3' },
+    { title: 'Nandito Ako', src: 'AUDIOS/Nandito Ako.mp3' },
+    { title: 'MAGO', src: 'AUDIOS/MAGO.mp3' },
+    { title: 'Pag-Ibig ay Kanibalismo II', src: 'AUDIOS/Pag-Ibig ay Kanibalismo II.mp3' }	
+];
+
+let shuffledPlaylist = [];
+let currentTrackIndex = 0;
+let audioPlaying = false;
+
+function initAudio() {
+    shuffledPlaylist = shuffleArray([...playlist]);
+    currentTrackIndex = 0;
+    const player = document.getElementById('musicPlayer');
+    player.src = shuffledPlaylist[0].src;
+    player.addEventListener('ended', playNextTrack);
+    setAudioStatus('Ready to shuffle');
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+function toggleAudio() {
+    const player = document.getElementById('musicPlayer');
+    if (!audioPlaying) {
+        if (!player.src) {
+            initAudio();
+        }
+        player.play().catch(() => {});
+        audioPlaying = true;
+        setAudioStatus(`Playing: ${shuffledPlaylist[currentTrackIndex].title}`);
+    } else {
+        player.pause();
+        audioPlaying = false;
+        setAudioStatus('Paused');
+    }
+}
+
+function playNextTrack() {
+    currentTrackIndex++;
+    if (currentTrackIndex >= shuffledPlaylist.length) {
+        shuffledPlaylist = shuffleArray([...playlist]);
+        currentTrackIndex = 0;
+    }
+    const player = document.getElementById('musicPlayer');
+    player.src = shuffledPlaylist[currentTrackIndex].src;
+    player.play();
+    setAudioStatus(`Playing: ${shuffledPlaylist[currentTrackIndex].title}`);
+}
+
+function setAudioStatus(value) {
+    const status = document.getElementById('audioStatus');
+    if (status) status.textContent = value;
+}
+
+function setNavbarColorFromImage() {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = 'IMAGES/SARI-SARI.jpg';
+    img.onload = function() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+        let r = 0, g = 0, b = 0;
+        let count = 0;
+        for (let i = 0; i < data.length; i += 4) {
+            r += data[i];
+            g += data[i+1];
+            b += data[i+2];
+            count++;
+        }
+        r = Math.floor(r / count);
+        g = Math.floor(g / count);
+        b = Math.floor(b / count);
+        const brightness = (r * 0.299 + g * 0.587 + b * 0.114);
+        const navbar = document.querySelector('.navbar');
+        navbar.style.background = `rgb(${r}, ${g}, ${b})`;
+        // Adjust text color for contrast
+        const textColor = brightness > 186 ? '#000' : '#fff';
+        navbar.style.color = textColor;
+        // Also adjust links and buttons
+        const links = navbar.querySelectorAll('a, button');
+        links.forEach(link => link.style.color = textColor);
+    };
+}
+
+setNavbarColorFromImage();
+
+function openStoreIfRequested() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('view') === 'store') {
+        const entranceView = document.getElementById('entranceView');
+        const storeInterior = document.getElementById('storeInterior');
+        if (entranceView && storeInterior) {
+            entranceView.style.display = 'none';
+            storeInterior.classList.add('active');
+            generateProducts();
+        }
+    }
+}
+
+window.addEventListener('DOMContentLoaded', openStoreIfRequested);
+
+// Navigation functionality
+function initNavigation() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all links
+            navLinks.forEach(l => l.classList.remove('active'));
+            
+            // Add active class to clicked link
+            this.classList.add('active');
+            
+            // Handle navigation based on section
+            const section = this.getAttribute('data-section');
+            handleNavigation(section);
+        });
+    });
+}
+
+
+
+// Initialize navigation when page loads
+window.addEventListener('DOMContentLoaded', initNavigation);
+
+// Game Selection Modal Functions
+function showGameSelection() {
+    const modal = document.getElementById('gameModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeGameSelection() {
+    const modal = document.getElementById('gameModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function selectGame(gameType) {
+    closeGameSelection();
+    
+    switch(gameType) {
+        case 'memory':
+            window.location.href = 'memory.html';
+            break;
+        case 'arnis':
+            window.location.href = 'initialpe.html';
+            break;
+        case 'space':
+            window.location.href = 'space.html';
+            break;
+        case 'slot':
+            window.location.href = 'slot.html';
+            break;
+    }
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('gameModal');
+    if (event.target === modal) {
+        closeGameSelection();
+    }
+}
+	</script>
+</body>
+</html>
