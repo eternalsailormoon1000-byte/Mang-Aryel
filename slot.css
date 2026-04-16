@@ -1,0 +1,101 @@
+body {
+    font-family: Arial;
+    text-align: center;
+    background: #111;
+    color: white;
+    margin-top: 40px;
+}
+
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border: 2px solid #E85D2E;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.back-button:hover {
+    background-color: #E85D2E;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.slots {
+    display: flex;
+}
+
+.slot {
+    width: 80px;
+    height: 80px;
+    font-size: 35px;
+    margin: 5px;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.lever {
+    width: 25px;
+    height: 140px;
+    background: #555;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.knob {
+    width: 45px;
+    height: 45px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: -10px;
+    transition: 0.2s ease;
+}
+
+.pull .knob {
+    top: 90px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#info {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.spinning {
+    animation: shake 0.08s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}

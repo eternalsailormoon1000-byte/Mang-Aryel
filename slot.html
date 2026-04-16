@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ultimate Slot Machine </title>
+	<link rel="stylesheet" href="slot.css">
+	<link rel="icon" type="image/png" href="IMAGES/logo.png">
+</head>
+<body>
+	<button class="back-button" onclick="window.location.href='index.html?view=store'">Back</button>
+	
+	<h1>🎰 Ultimate Slot Machine</h1>
+
+	<div id="info">Chances: 10 <br> Conditions: A number should appear three times in three differents slots in order to win
+	<br> Example: 1, 2, 1, 4, 1 <br> If you win a jackpot, a reward will be given to you </div>
+		<div class="container">
+			<div class="slots">
+				<div class="slot" id="s1">❔</div>
+				<div class="slot" id="s2">❔</div>
+				<div class="slot" id="s3">❔</div>
+				<div class="slot" id="s4">❔</div>
+				<div class="slot" id="s5">❔</div>
+    </div>
+
+    <div class="lever" id="lever" onclick="pullLever()">
+        <div class="knob"></div>
+    </div>
+	</div>
+
+<button onclick="restart()">RESTART</button>
+<div id="result"></div>
+<!-- 🔊 SOUNDS -->
+<audio id="leverSound" src="AUDIOS/leversound1.mp4"></audio>
+<audio id="loseSound" src="AUDIOS/0412.mp4"></audio>
+<audio id="winSound" src="AUDIOS/win.mp4"></audio>
+<audio id="jackpotSound" src="AUDIOS/JACKPOT.mp4"></audio>
+
+<script src="slot.js"> </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Space Quiz Mission</title>
+	<link rel="stylesheet" href="space.css">
+</head>
+<body>
+
+<!-- MENU -->
+<div id="menu">
+    <h1>🚀 Space Quiz Mission</h1>
+    <p>
+        Use arrow keys to move.<br>
+        Catch the correct answer!<br>
+        Build combos for higher score.
+    </p>
+    <button onclick="startGame()">Start Game</button>
+</div>
+
+<div id="game">
+    <div id="score">Score: 0 | Combo: x0</div>
+    <div id="question">Get Ready...</div>
+    <div id="message"></div>
+    <div id="rocket">🚀</div>
+
+    <!-- 🔥 Pause Button -->
+    <button id="pauseBtn" onclick="togglePause()">⏸ Pause</button>    
+    <button class="back-button" onclick="window.location.href='index.html?view=store'" style="position: absolute; bottom: 20px; right: 20px; background: linear-gradient(135deg, #1a1a40 0%, #000010 100%); border: 2px solid #4169e1; color: #87ceeb; text-shadow: 0 0 8px rgba(135, 206, 235, 0.8); box-shadow: 0 4px 15px rgba(26, 26, 64, 0.6), inset 0 1px 0 rgba(135, 206, 235, 0.3); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: bold; transition: all 0.3s ease;">Back to Products</button>
+</div>
+
+<script src="space.js"> </script>
+</body>
+</html>
