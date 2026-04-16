@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arnis Duel</title>
+  <link rel="icon" type="image/png" href="IMAGES/logo.png">
+  <link rel="stylesheet" href="arnisto.css">
+</head>
+<body>
+  <button class="back-button" onclick="window.location.href='index.html?view=store'">Back</button>
+
+  <div class="game-header">
+    <h1>🥋 Arnis Duel</h1>
+    <div class="score-combo">Score: <span id="score">0</span> | Combo: <span id="combo">0</span></div>
+  </div>
+
+  <div class="game-info">
+    <div class="health-section">
+      <div class="health-container">
+        <div>Player HP</div>
+        <div class="bar"><div id="playerHP" class="fill"></div></div>
+      </div>
+      <div class="health-container">
+        <div>Enemy HP</div>
+        <div class="bar"><div id="enemyHP" class="fill enemyFill"></div></div>
+      </div>
+    </div>
+    <div class="controls-section">
+      <div id="message"></div>
+      <button id="startBtn">Start Game</button>
+      <button id="restartBtn" style="display:none;">Restart Game</button>
+    </div>
+  </div>
+
+  <div id="arena">
+    <img id="bgArtImg" src="IMAGES/IMG_1329.PNG" alt="Attack art">
+
+    <div class="stick" id="leftStick"></div>
+    <div class="stick" id="rightStick"></div>
+
+    <div id="enemy">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="arm left-arm"></div>
+      <div class="arm right-arm"></div>
+      <div class="stickEnemy" id="enemyStick"></div>
+      <div class="leg left-leg"></div>
+      <div class="leg right-leg"></div>
+    </div>
+  </div>
+
+  <script src="arnisto.js"></script>
+</body>
+</html>

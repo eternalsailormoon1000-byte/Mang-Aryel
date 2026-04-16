@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Matching Game</title>
+    <link rel="stylesheet" href="style1.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="icon" type="image/png" href="IMAGES/logo.png">
+</head>
+<body>
+    <div id="ol"></div>
+		<div style="height: 8px;"></div>
+			<span id="logo" style="font-weight: bold; color: #D95500;">MEMORY MATCHING GAME</span>
+    
+	<div style="margin-top: 12px;">
+        <button id="backButton" onclick="window.location.href='index.html?view=store'" style="padding: 8px 14px; border: 2px solid #FFD700; background: #D95500; color: #fff; border-radius: 6px; cursor: pointer; font-weight: bold;">Back to Store</button>
+    </div>
+
+    <div id="title" style="height: 40px;">
+        <span id="time" style="color: #333; font-weight: bold;"></span>
+			<span id="moves" style="color: #333; font-weight: bold;"></span>
+    </div>
+    
+		<table id="game-board" cellspacing="0"></table>
+    
+	<script src="script.js"></script>
+</body>
+</html>
