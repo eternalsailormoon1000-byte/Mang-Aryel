@@ -181,7 +181,7 @@ body {
         .entrance {
             width: 99.999%;
             height: 100vh;
-            background-image: url('IMAGES/SARI-SARI.jpg');
+            background-image: url('SARI-SARI.jpg');
             display: flex;
             flex-direction: column;
             justify-content: center;
