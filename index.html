@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mang Aryel Sari Sari Store</title>
 	<link rel="stylesheet" href="VSC2.css">
-	<link rel="icon" type="image/png" href="IMAGES/logo.png">
+	<link rel="icon" type="image/png" href="logo.png">
     <style>
 
     </style>
@@ -15,9 +15,9 @@
     <nav class="navbar">
         <div class="navbar-left">
             <div class="navbar-logos">
-			<a href="https://www.umak.edu.ph/about/"><img src="IMAGES/UMak Logo - Black R.png" alt="UMAK" class="logo-icon"></a>
-				<a href="https://www.umak.edu.ph/academics/college/cite/"><img src="IMAGES/CITE.png" alt="CITE" class="logo-icon"></a>
-					<a href="https://www.umak.edu.ph/academics/college/cite/hsu/"><img src="IMAGES/HSU.png" alt="HSU" class="logo-icon"></a>
+			<a href="https://www.umak.edu.ph/about/"><img src="UMak Logo - Black R.png" alt="UMAK" class="logo-icon"></a>
+				<a href="https://www.umak.edu.ph/academics/college/cite/"><img src="CITE.png" alt="CITE" class="logo-icon"></a>
+					<a href="https://www.umak.edu.ph/academics/college/cite/hsu/"><img src="HSU.png" alt="HSU" class="logo-icon"></a>
             </div>
             <div class="navbar-separator"></div>
             <div class="navbar-title"><button class="audio-button" onclick="toggleAudio()">🔊</button></div>
@@ -98,21 +98,21 @@
     <script>
 // Store products
 const products = [
-    { name: 'Stick-o', imageUrl: 'IMAGES/StickO.png'},
-    { name: 'Cheezy', imageUrl: 'IMAGES/Cheezy.png'},
-    { name: 'Vcut', imageUrl: 'IMAGES/Vcut.png'},
-	{ name: 'Clover Chip', imageUrl: 'IMAGES/Clover.png'},
-	{ name: 'Mr. Chips', imageUrl: 'IMAGES/Mr. Chips.png'},
-	{ name: 'Tomi', imageUrl: 'IMAGES/Tomi.png'},
-	{ name: 'Fudgee Bar Flavor Combo', imageUrl: 'IMAGES/Fudgee Bar.png'},
-	{ name: 'Bear Brand (33g)', imageUrl: 'IMAGES/Bear Brand.png'},
-	{ name: 'Milo', imageUrl: 'IMAGES/Milo.png'},
-	{ name: 'De Lata', imageUrl: 'IMAGES/De lata.png'},
-	{ name: 'Tide Bar Soap (150g)', imageUrl: 'IMAGES/Tide Bar Soap.png'},
-	{ name: 'Ariel Twin Jumbo Pack', imageUrl: 'IMAGES/Ariel.png'},
-	{ name: 'Palmolive Triple Sachet', imageUrl: 'IMAGES/Palmolive.png'},
-	{ name: 'Lucky Me Assorted', imageUrl: 'IMAGES/Lucky.png'},
-	{ name: 'Datu Puti Toyo at Suka', imageUrl: 'IMAGES/Toyo.png'}
+    { name: 'Stick-o', imageUrl: 'StickO.png'},
+    { name: 'Cheezy', imageUrl: 'Cheezy.png'},
+    { name: 'Vcut', imageUrl: 'Vcut.png'},
+	{ name: 'Clover Chip', imageUrl: 'Clover.png'},
+	{ name: 'Mr. Chips', imageUrl: 'Mr. Chips.png'},
+	{ name: 'Tomi', imageUrl: 'Tomi.png'},
+	{ name: 'Fudgee Bar Flavor Combo', imageUrl: "Fudgee Bar.png'},
+	{ name: 'Bear Brand (33g)', imageUrl: 'Bear Brand.png'},
+	{ name: 'Milo', imageUrl: 'Milo.png'},
+	{ name: 'De Lata', imageUrl: 'De lata.png'},
+	{ name: 'Tide Bar Soap (150g)', imageUrl: 'Tide Bar Soap.png'},
+	{ name: 'Ariel Twin Jumbo Pack', imageUrl: 'Ariel.png'},
+	{ name: 'Palmolive Triple Sachet', imageUrl: 'Palmolive.png'},
+	{ name: 'Lucky Me Assorted', imageUrl: 'Lucky.png'},
+	{ name: 'Datu Puti Toyo at Suka', imageUrl: 'Toyo.png'}
 ];
 
 function getNextGame() {
@@ -220,13 +220,13 @@ style.textContent = `
 document.head.appendChild(style);
 
 const playlist = [
-    { title: 'Sino Nga Ba Siya', src: 'AUDIOS/Sino Nga Ba Siya.mp3' },
-	{ title: 'Not Cute Anymore', src: 'AUDIOS/Not Cute Anymore.mp3' },
-    { title: 'Cosmic', src: 'AUDIOS/Cosmic.mp3' },
-    { title: 'Reckless', src: 'AUDIOS/Reckless.mp3' },
-    { title: 'Nandito Ako', src: 'AUDIOS/Nandito Ako.mp3' },
-    { title: 'MAGO', src: 'AUDIOS/MAGO.mp3' },
-    { title: 'Pag-Ibig ay Kanibalismo II', src: 'AUDIOS/Pag-Ibig ay Kanibalismo II.mp3' }	
+    { title: 'Sino Nga Ba Siya', src: 'Sino Nga Ba Siya.mp3' },
+	{ title: 'Not Cute Anymore', src: 'Not Cute Anymore.mp3' },
+    { title: 'Cosmic', src: 'Cosmic.mp3' },
+    { title: 'Reckless', src: 'Reckless.mp3' },
+    { title: 'Nandito Ako', src: 'Nandito Ako.mp3' },
+    { title: 'MAGO', src: 'MAGO.mp3' },
+    { title: 'Pag-Ibig ay Kanibalismo II', src: 'Pag-Ibig ay Kanibalismo II.mp3' }	
 ];
 
 let shuffledPlaylist = [];
